@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Happy Mesiversary </title>
+  <title>Happy Mesiversary 💕</title>
   <!-- Cute Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Sacramento&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
@@ -37,7 +37,6 @@
       color: white;
       cursor: pointer;
       transition: transform 0.2s, background 0.3s;
-      position: relative;
     }
     button:hover {
       transform: scale(1.1);
@@ -68,25 +67,29 @@
       from { transform: translateY(0) scale(1); opacity: 1; }
       to { transform: translateY(-120vh) scale(1.5); opacity: 0; }
     }
+    / No button must be absolute so it can move /
+    #noBtn {
+      position: absolute;
+    }
   </style>
 </head>
 <body>
-  <h1>Happy Mesiversary, my love </h1>
+  <h1>Happy Mesiversary, my love ❤️</h1>
   <p>Wanna see your gift?</p>
   <button onclick="showGift()">Yes</button>
   <button id="noBtn" onmouseover="moveNo()" onclick="showNo()">No</button>
 
   <!-- YES response -->
   <div id="gift">
-    <h2> Here’s your surprise! </h2>
+    <h2>🎁 Here’s your surprise! 🎁</h2>
     <img src="https://media.giphy.com/media/j5QcmXoFWl4Q0/giphy.gif" width="300">
-    <p>I love you forever </p>
+    <p>I love you forever 💕</p>
   </div>
 
   <!-- NO response -->
   <div id="noResponse">
     <h2>Babyyyyyyy, pls you will like it TwT</h2>
-    <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExMDZjb3VmemNheDJ2cTh2bTFic3NwM3BvMnVvbnEwZGxheGZhdml1aSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/jRtGjzkm8JbRC/giphy.gif" width="250">
+    <img src="https://media.giphy.com/media/ROF8OQvDmxytW/giphy.gif" width="250">
   </div>
 
   <!-- Floating hearts generator -->
@@ -105,7 +108,6 @@
     function moveNo() {
       let x = Math.random() (window.innerWidth - noBtn.offsetWidth);
       let y = Math.random() * (window.innerHeight - noBtn.offsetHeight - 50) + 50;
-      noBtn.style.position = "absolute";
       noBtn.style.left = x + "px";
       noBtn.style.top = y + "px";
     }
@@ -114,7 +116,7 @@
     function createHeart() {
       const heart = document.createElement("div");
       heart.className = "heart";
-      heart.innerHTML = "";
+      heart.innerHTML = "❤️";
       heart.style.left = Math.random() * 100 + "vw";
       heart.style.fontSize = (20 + Math.random() * 30) + "px";
       heart.style.animationDuration = (4 + Math.random() * 3) + "s";
