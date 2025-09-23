@@ -72,6 +72,49 @@ to { transform: translateY(-120vh) scale(1.5); opacity: 0; }
 #noBtn {
 position: absolute;
 }
+
+/* Letter and Steam styles */
+.letter {
+width: 100px;
+height: 100px;
+background: url('https://cdn-icons-png.flaticon.com/512/2991/2991148.png') no-repeat center/cover;
+margin: 20px auto;
+cursor: pointer;
+}
+.letter-content {
+display: none;
+background: #fff0f5;
+border: 2px solid #d1005d;
+border-radius: 10px;
+padding: 20px;
+margin-top: 10px;
+max-width: 300px;
+color: #d1005d;
+font-size: 1em;
+}
+.steam-bar {
+width: 250px;
+margin: 20px auto;
+padding: 15px;
+background: #ff4d79;
+color: white;
+border-radius: 25px;
+cursor: pointer;
+transition: background 0.3s;
+}
+.steam-bar:hover {
+background: #d1005d;
+}
+.steam-code {
+display: none;
+margin-top: 10px;
+background: #fff0f5;
+color: #d1005d;
+border: 2px solid #d1005d;
+border-radius: 10px;
+padding: 10px;
+font-weight: bold;
+}
 </style>
 </head>
 <body>
@@ -85,6 +128,20 @@ position: absolute;
 <h2>🎁 Here’s your surprise! 🎁</h2>
 <img src="https://media.giphy.com/media/j5QcmXoFWl4Q0/giphy.gif" width="300">
 <p>I love you forever 💕</p>
+
+<!-- Letter -->
+<div class="letter" onclick="toggleLetter()"></div>
+<div class="letter-content" id="letterContent">
+<!-- You can write your message here later -->
+Hey love! ❤️ This is a little message just for you...
+</div>
+
+<!-- Steam code -->
+<div class="steam-bar" onclick="toggleSteam()">Click to reveal your Steam code 🎮</div>
+<div class="steam-code" id="steamCode">
+<!-- Put your Steam code here -->
+ABCD-EFGH-IJKL
+</div>
 </div>
 
 <!-- NO response -->
@@ -124,6 +181,18 @@ moveNo(); // button escapes
 } else {
 showNo(); // message shows on 3rd click
 }
+}
+
+// Letter toggle
+function toggleLetter() {
+const letter = document.getElementById('letterContent');
+letter.style.display = letter.style.display === 'block' ? 'none' : 'block';
+}
+
+// Steam code toggle
+function toggleSteam() {
+const code = document.getElementById('steamCode');
+code.style.display = code.style.display === 'block' ? 'none' : 'block';
 }
 
 // Attach events
