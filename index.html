@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Happy Mesiversary 💕</title>
+  <style>
+    body { text-align: center; font-family: Arial; background: pink; }
+    h1 { font-size: 3em; color: darkred; }
+    button { padding: 15px; margin: 10px; font-size: 1.2em; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <h1>Happy Mesiversary, my love ❤️</h1>
+  <p>Wanna see your gift?</p>
+  <button onclick="showGift()">Yes</button>
+  <button onclick="alert('Aww, maybe later 😘')">No</button>
+
+  <div id="gift" style="display:none; margin-top:20px;">
+    <h2>🎁 Here’s your surprise! 🎁</h2>
+    <img src="https://media.giphy.com/media/j5QcmXoFWl4Q0/giphy.gif" width="300">
+    <p>I love you forever 💕</p>
+  </div>
+
+  <script>
+    function showGift() {
+      document.getElementById('gift').style.display = 'block';
+    }
+  </script>
+</body>
+</html>
