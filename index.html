@@ -1,129 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Happy Mesiversary 💕</title>
-  <!-- Cute Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Sacramento&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      text-align: center;
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #ffb6c1, #ffe4e1);
-      overflow: hidden;
-      height: 100vh;
-      position: relative;
-    }
-    h1 {
-      font-family: 'Sacramento', cursive;
-      font-size: 4em;
-      color: #d1005d;
-      margin-top: 60px;
-      animation: fadeIn 2s ease-in;
-    }
-    p {
-      font-size: 1.4em;
-      margin-bottom: 20px;
-      color: #333;
-    }
-    button {
-      padding: 15px 25px;
-      margin: 10px;
-      font-size: 1.2em;
-      border: none;
-      border-radius: 25px;
-      background: #ff4d79;
-      color: white;
-      cursor: pointer;
-      transition: transform 0.2s, background 0.3s;
-    }
-    button:hover {
-      transform: scale(1.1);
-      background: #d1005d;
-    }
-    #gift, #noResponse {
-      display: none;
-      margin-top: 30px;
-      animation: fadeIn 1.5s ease-in;
-    }
-    #gift h2, #noResponse h2 {
-      color: #d1005d;
-      font-size: 2em;
-    }
-    @keyframes fadeIn {
-      from {opacity: 0;}
-      to {opacity: 1;}
-    }
-    /* Floating hearts /
-    .heart {
-      position: absolute;
-      bottom: -50px;
-      color: rgba(255,0,100,0.7);
-      font-size: 24px;
-      animation: floatUp 6s linear infinite;
-    }
-    @keyframes floatUp {
-      from { transform: translateY(0) scale(1); opacity: 1; }
-      to { transform: translateY(-120vh) scale(1.5); opacity: 0; }
-    }
-    / No button must be absolute so it can move /
-    #noBtn {
-      position: absolute;
-    }
-  </style>
+<meta charset="UTF-8">
+<title>Happy Mesiversary 💕</title>
+<!-- Cute Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Sacramento&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<style>
+body {
+margin: 0;
+text-align: center;
+font-family: 'Poppins', sans-serif;
+background: linear-gradient(135deg, #ffb6c1, #ffe4e1);
+overflow: hidden;
+height: 100vh;
+position: relative;
+}
+h1 {
+font-family: 'Sacramento', cursive;
+font-size: 4em;
+color: #d1005d;
+margin-top: 60px;
+animation: fadeIn 2s ease-in;
+}
+p {
+font-size: 1.4em;
+margin-bottom: 20px;
+color: #333;
+}
+button {
+padding: 15px 25px;
+margin: 10px;
+font-size: 1.2em;
+border: none;
+border-radius: 25px;
+background: #ff4d79;
+color: white;
+cursor: pointer;
+transition: transform 0.2s, background 0.3s;
+position: relative;
+}
+button:hover {
+transform: scale(1.1);
+background: #d1005d;
+}
+#gift, #noResponse {
+display: none;
+margin-top: 30px;
+animation: fadeIn 1.5s ease-in;
+}
+#gift h2, #noResponse h2 {
+color: #d1005d;
+font-size: 2em;
+}
+@keyframes fadeIn {
+from {opacity: 0;}
+to {opacity: 1;}
+}
+/* Floating hearts */
+.heart {
+position: absolute;
+bottom: -50px;
+color: rgba(255,0,100,0.7);
+font-size: 24px;
+animation: floatUp 6s linear infinite;
+}
+@keyframes floatUp {
+from { transform: translateY(0) scale(1); opacity: 1; }
+to { transform: translateY(-120vh) scale(1.5); opacity: 0; }
+}
+/* No button absolute so it can move freely */
+#noBtn {
+position: absolute;
+}
+</style>
 </head>
 <body>
-  <h1>Happy Mesiversary, my love ❤️</h1>
-  <p>Wanna see your gift?</p>
-  <button onclick="showGift()">Yes</button>
-  <button id="noBtn" onmouseover="moveNo()" onclick="showNo()">No</button>
+<h1>Happy Mesiversary, my love ❤️</h1>
+<p>Wanna see your gift?</p>
+<button onclick="showGift()">Yes</button>
+<button id="noBtn">No</button>
 
-  <!-- YES response -->
-  <div id="gift">
-    <h2>🎁 Here’s your surprise! 🎁</h2>
-    <img src="https://media.giphy.com/media/j5QcmXoFWl4Q0/giphy.gif" width="300">
-    <p>I love you forever 💕</p>
-  </div>
+<!-- YES response -->
+<div id="gift">
+<h2>🎁 Here’s your surprise! 🎁</h2>
+<img src="https://media.giphy.com/media/j5QcmXoFWl4Q0/giphy.gif" width="300">
+<p>I love you forever 💕</p>
+</div>
 
-  <!-- NO response -->
-  <div id="noResponse">
-    <h2>Babyyyyyyy, pls you will like it TwT</h2>
-    <img src="https://media.giphy.com/media/ROF8OQvDmxytW/giphy.gif" width="250">
-  </div>
+<!-- NO response -->
+<div id="noResponse">
+<h2>Babyyyyyyy, pls you will like it TwT</h2>
+<img src="https://media.giphy.com/media/ROF8OQvDmxytW/giphy.gif" width="250">
+</div>
 
-  <!-- Floating hearts generator -->
-  <script>
-    function showGift() {
-      document.getElementById('gift').style.display = 'block';
-      document.getElementById('noResponse').style.display = 'none';
-    }
-    function showNo() {
-      document.getElementById('noResponse').style.display = 'block';
-      document.getElementById('gift').style.display = 'none';
-    }
+<!-- Floating hearts & button script -->
+<script>
+const noBtn = document.getElementById("noBtn");
+let attempts = 0;
 
-    // Make the "No" button run away
-    let noBtn = document.getElementById("noBtn");
-    function moveNo() {
-      let x = Math.random() (window.innerWidth - noBtn.offsetWidth);
-      let y = Math.random() * (window.innerHeight - noBtn.offsetHeight - 50) + 50;
-      noBtn.style.left = x + "px";
-      noBtn.style.top = y + "px";
-    }
+function showGift() {
+document.getElementById('gift').style.display = 'block';
+document.getElementById('noResponse').style.display = 'none';
+}
 
-    // Create floating hearts
-    function createHeart() {
-      const heart = document.createElement("div");
-      heart.className = "heart";
-      heart.innerHTML = "❤️";
-      heart.style.left = Math.random() * 100 + "vw";
-      heart.style.fontSize = (20 + Math.random() * 30) + "px";
-      heart.style.animationDuration = (4 + Math.random() * 3) + "s";
-      document.body.appendChild(heart);
-      setTimeout(() => heart.remove(), 7000);
-    }
-    setInterval(createHeart, 700);
-  </script>
+function showNo() {
+document.getElementById('noResponse').style.display = 'block';
+document.getElementById('gift').style.display = 'none';
+}
+
+// Move the "No" button to a random location
+function moveNo() {
+let x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+let y = Math.random() * (window.innerHeight - noBtn.offsetHeight - 50) + 50;
+noBtn.style.left = x + "px";
+noBtn.style.top = y + "px";
+}
+
+// Handle clicks on "No" button
+function handleNoClick() {
+attempts++;
+if (attempts < 3) {
+moveNo(); // button escapes
+} else {
+showNo(); // message shows on 3rd click
+}
+}
+
+// Attach events
+noBtn.addEventListener("mouseover", moveNo);
+noBtn.addEventListener("click", handleNoClick);
+
+// Create floating hearts
+function createHeart() {
+const heart = document.createElement("div");
+heart.className = "heart";
+heart.innerHTML = "❤️";
+heart.style.left = Math.random() * 100 + "vw";
+heart.style.fontSize = (20 + Math.random() * 30) + "px";
+heart.style.animationDuration = (4 + Math.random() * 3) + "s";
+document.body.appendChild(heart);
+setTimeout(() => heart.remove(), 7000);
+}
+setInterval(createHeart, 700);
+</script>
 </body>
 </html>
