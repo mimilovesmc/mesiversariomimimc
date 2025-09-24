@@ -3,565 +3,155 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Four months together </title>
+<title>Four months together ✨</title>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;600;800&display=swap" rel="stylesheet">
 <style>
- :root{
- --bg:#dff6ff; /* soft light blue background */
- --accent:#8fd3ff;
- --muted:#d8efff;
- --text:#063a56;
- --white:#ffffff;
- --blue-shape:#7fb6f5;
- --shadow: 0 10px 30px rgba(6,40,70,0.09);
- --glass: rgba(255,255,255,0.7);
- }
- *{box-sizing:border-box}
- html,body{height:100%}
- body{
- margin:0;
- font-family: 'Nunito', system-ui, -apple-system, "Segoe UI", Roboto, Arial;
- background: linear-gradient(180deg,var(--bg), #d2eeff 65%);
- color:var(--text);
- overflow:hidden;
- }
-
- /* main wrapper */
- .page{
- position:relative;
- min-height:100vh;
- display:flex;
- align-items:center;
- justify-content:center;
- padding:28px;
- text-align:center;
- }
-
- h1.title{
- font-size:clamp(20px,4vw,36px);
- margin:0 20px 18px;
- color:#044b72;
- font-weight:900;
- text-shadow:0 3px 14px rgba(2,40,70,0.06);
- }
-
- /* cloud buttons */
- .cloud-row{display:flex;gap:18px;align-items:center;justify-content:center;position:relative;z-index:40}
- .cloud-btn{
- position:relative;
- display:inline-flex;
- align-items:center;
- justify-content:center;
- width:150px;height:64px;padding:12px 18px;border-radius:48px;
- background:linear-gradient(180deg,var(--white), #f6fcff);
- border:none;font-weight:900;font-size:20px;cursor:pointer;
- box-shadow: var(--shadow), inset 0 -6px 12px rgba(0,120,200,0.06);
- user-select:none; transition:transform .16s ease, left .28s ease, top .28s ease, opacity .28s;
- }
- .cloud-btn:active{transform:scale(.98)}
- .cloud-btn::before,.cloud-btn::after{
- content:'';position:absolute;background:var(--white);border-radius:50%;box-shadow:0 8px 18px rgba(2,30,50,0.06);
- }
- .cloud-btn::before{width:56px;height:56px;left:-18px;top:-18px}
- .cloud-btn::after{width:36px;height:36px;right:-12px;top:-10px}
-
- /* lock overlay */
- .overlay{
- position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background: rgba(5,30,50,0.12);z-index:180;
- }
- .hidden{display:none}
-
- .lock-box{
- width:360px;max-width:92%;border-radius:18px;background:linear-gradient(180deg,#ffffff,#f7feff);
- padding:16px;border:2px solid rgba(255,255,255,0.6);box-shadow:var(--shadow);text-align:center;
- position:relative;
- }
- .gif-area{width:120px;height:120px;margin:8px auto 10px;border-radius:14px;background:var(--glass);display:flex;align-items:center;justify-content:center;overflow:hidden}
- .gif-area img{width:100%;height:100%;object-fit:cover;display:block}
-
- .code-display{display:flex;gap:8px;justify-content:center;margin:10px 0 6px}
- .digit-box{width:36px;height:46px;border-radius:8px;background:linear-gradient(180deg,#fff,#f1fbff);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:20px;border:2px solid #e3f3ff;box-shadow:0 8px 18px rgba(3,30,50,0.06)}
-
- /* keypad hearts */
- .keypad{display:grid;grid-template-columns:repeat(3,72px);gap:12px;justify-content:center;margin-top:12px}
- .heart-btn{width:72px;height:64px;border-radius:18px;background:linear-gradient(180deg,#ffffff,#f3fbff);border:1px solid rgba(128,200,255,0.25);
- display:flex;align-items:center;justify-content:center;flex-direction:column;font-weight:900;cursor:pointer;box-shadow:0 8px 18px rgba(3,30,50,0.06)}
- .heart-shape{
- width:46px;height:36px;position:relative;display:block;
- }
- .heart-shape:before, .heart-shape:after{
- content:'';position:absolute;width:22px;height:36px;background:var(--blue-shape);border-radius:12px 12px 0 0;
- }
- .heart-shape:before{transform:rotate(-45deg);left:6px;top:0}
- .heart-shape:after{transform:rotate(45deg);left:18px;top:0}
- .heart-label{font-size:16px;margin-top:6px;color:var(--text)}
-
- .small-ctrls{display:flex;justify-content:center;gap:12px;margin-top:10px}
- .ctrl-btn{padding:8px 12px;border-radius:999px;border:none;background:var(--accent);color:white;font-weight:800;cursor:pointer;box-shadow:0 8px 18px rgba(3,30,50,0.06)}
-
- .msg{font-weight:800;margin-top:10px;color:#144a6b}
-
- /* menu screen */
- #menu{display:none;min-height:100vh;padding:32px;box-sizing:border-box;overflow:auto}
- .cinna-top{display:flex;flex-direction:column;align-items:center;gap:8px;margin-bottom:18px}
- .cinna-face{width:110px;height:110px;border-radius:999px;background:linear-gradient(#fff,#fffefc);display:flex;align-items:center;justify-content:center;font-size:30px;box-shadow:var(--shadow);position:relative}
- .cinna-face::before,.cinna-face::after{content:'';position:absolute;width:40px;height:62px;background:linear-gradient(#fff,#f7fbff);border-radius:40px;top:-12px}
- .cinna-face::before{left:-40px;transform:rotate(-8deg)}
- .cinna-face::after{right:-40px;transform:rotate(8deg)}
-
- .menu-grid{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
- .menu-item{width:120px;height:120px;border-radius:14px;background:linear-gradient(180deg,#fff,#fbfdff);display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:var(--shadow);cursor:pointer;font-weight:800}
- .content-card{margin-top:18px;width:min(800px,92%);padding:14px;border-radius:12px;background:rgba(255,255,255,0.92);box-shadow:var(--shadow)}
-
- /* reveal bar & code box */
- .reveal-bar{height:52px;border-radius:26px;background:linear-gradient(90deg,#dfefff,#eaf6ff);display:flex;align-items:center;justify-content:center;cursor:pointer;user-select:none;box-shadow:var(--shadow);font-weight:900}
- .code-box{margin-top:12px;padding:12px;border-radius:10px;background:#fff;font-weight:800;letter-spacing:1px;box-shadow:var(--shadow)}
-
- /* floating shapes background */
- #float-wrap{position:fixed;inset:0;pointer-events:none;z-index:8;overflow:hidden}
- .float{position:absolute;bottom:-120px;opacity:0;will-change:transform,opacity;pointer-events:none}
- svg.shape{display:block}
-
- /* small responsive */
- @media (max-width:520px){
- .cloud-btn{width:124px;height:56px;font-size:18px}
- .keypad{grid-template-columns:repeat(3,60px)}
- .heart-btn{width:60px;height:52px}
- }
+body{
+margin:0;
+font-family:'Nunito',sans-serif;
+background:linear-gradient(180deg,#dff3ff,#d6eefc 60%);
+overflow:hidden;
+color:#083a52;
+}
+h1{margin:10px 0;font-size:28px;text-align:center}
+.screen{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;text-align:center;padding:20px}
+.cloud-btn{
+background:white;border:none;padding:15px 30px;border-radius:50px;margin:10px;font-size:20px;font-weight:bold;
+cursor:pointer;box-shadow:0 5px 15px rgba(0,0,0,0.1)
+}
+#no-btn{position:relative}
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,0.2);display:flex;align-items:center;justify-content:center;z-index:100}
+.hidden{display:none}
+.lock-card{background:white;border-radius:15px;padding:20px;max-width:400px;width:90%;box-shadow:0 10px 30px rgba(0,0,0,0.1);text-align:center}
+input{padding:10px;border:2px solid #88ccff;border-radius:10px;margin-top:10px;font-size:18px;text-align:center}
+.btn-pill{margin-top:10px;padding:10px 20px;border-radius:20px;background:#88ccff;color:white;font-weight:bold;border:none;cursor:pointer}
+#menu{display:none;flex-direction:column;align-items:center;justify-content:flex-start;padding:30px;height:100vh;overflow:auto}
+.menu-grid{display:flex;gap:15px;flex-wrap:wrap;justify-content:center;margin-top:20px}
+.menu-item{width:120px;height:120px;background:white;border-radius:15px;box-shadow:0 5px 15px rgba(0,0,0,0.1);
+display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer}
+.content-card{background:white;border-radius:15px;box-shadow:0 5px 15px rgba(0,0,0,0.1);padding:20px;margin-top:20px;max-width:600px;width:90%}
+.reveal-bar{margin-top:15px;padding:15px;border-radius:20px;background:#eaf6ff;cursor:pointer;font-weight:bold}
 </style>
 </head>
 <body>
- <!-- floating shapes -->
- <div id="float-wrap" aria-hidden="true"></div>
 
- <!-- MAIN START SCREEN -->
- <main id="start" class="page" role="main" aria-live="polite">
- <div>
- <h1 class="title">Four months together, do you want to see your gift?</h1>
- <div class="cloud-row" id="cloudRow">
- <button id="yesBtn" class="cloud-btn" aria-label="Yes">yes</button>
- <button id="noBtn" class="cloud-btn" aria-label="No">no</button>
- </div>
- </div>
- </main>
+<!-- floating shapes -->
+<div id="float-wrap"></div>
 
- <!-- LOCK SCREEN (hidden until YES clicked) -->
- <div id="lockOverlay" class="overlay hidden" role="dialog" aria-modal="true">
- <div class="lock-box" role="document" aria-label="Lock screen">
- <!-- GIF at top (initial gif) -->
- <div class="gif-area" id="gifArea">
- <!-- Tenor gif you requested (start gif) -->
- <img id="stateGif" src="https://tenor.com/bJSsY.gif" alt="cute lock gif" />
- </div>
+<!-- MAIN SCREEN -->
+<main id="main" class="screen">
+<!-- Main page gif -->
+<div class="tenor-gif-embed" data-postid="4580452194650460755" data-share-method="host" data-aspect-ratio="1" data-width="200px"></div>
+<h1>Four months together, do you want to see your gift?</h1>
+<div>
+<button id="yes-btn" class="cloud-btn">yes</button>
+<button id="no-btn" class="cloud-btn">no</button>
+</div>
+</main>
 
- <!-- code display (six boxes) -->
- <div class="code-display" aria-hidden="true">
- <div class="digit-box" id="d1"></div>
- <div class="digit-box" id="d2"></div>
- <div class="digit-box" id="d3"></div>
- <div class="digit-box" id="d4"></div>
- <div class="digit-box" id="d5"></div>
- <div class="digit-box" id="d6"></div>
- </div>
+<!-- LOCK SCREEN -->
+<div id="lock-overlay" class="overlay hidden">
+<div class="lock-card">
+<!-- Lock screen gif -->
+<div class="tenor-gif-embed" data-postid="7305456039700818281" data-share-method="host" data-aspect-ratio="1.27586" data-width="200px"></div>
+<h2>Enter the code to open your gift</h2>
+<input id="pw" type="password" maxlength="6" placeholder="••••••">
+<br>
+<button id="open-btn" class="btn-pill">Open</button>
+</div>
+</div>
 
- <!-- keypad (heart shaped buttons) -->
- <div class="keypad" role="group" aria-label="number keypad" id="keypad">
- <!-- numbers 1..9 -->
- <button class="heart-btn" data-key="1"><span class="heart-shape"></span><div class="heart-label">1</div></button>
- <button class="heart-btn" data-key="2"><span class="heart-shape"></span><div class="heart-label">2</div></button>
- <button class="heart-btn" data-key="3"><span class="heart-shape"></span><div class="heart-label">3</div></button>
+<!-- ERROR SCREEN -->
+<div id="error-overlay" class="overlay hidden">
+<div class="lock-card">
+<!-- Wrong password gif -->
+<div class="tenor-gif-embed" data-postid="9370341840084598979" data-share-method="host" data-aspect-ratio="0.6875" data-width="200px"></div>
+<p>aw baby… try again!</p>
+<button id="try-again" class="btn-pill">Try again</button>
+</div>
+</div>
 
- <button class="heart-btn" data-key="4"><span class="heart-shape"></span><div class="heart-label">4</div></button>
- <button class="heart-btn" data-key="5"><span class="heart-shape"></span><div class="heart-label">5</div></button>
- <button class="heart-btn" data-key="6"><span class="heart-shape"></span><div class="heart-label">6</div></button>
+<!-- MENU -->
+<section id="menu" class="screen">
+<!-- Celebration gif when unlocked -->
+<div id="celebrateGif" class="hidden" style="margin-bottom:20px">
+<div class="tenor-gif-embed" data-postid="23288118" data-share-method="host" data-aspect-ratio="1.23552" data-width="200px"></div>
+</div>
+<h2>Open your little world</h2>
+<div class="menu-grid">
+<div class="menu-item" id="letterBtn">
+<div style="font-size:34px">✉️</div><div>Letter</div>
+</div>
+<div class="menu-item" id="musicBtn">
+<div style="font-size:34px">🎵</div><div>Songs</div>
+</div>
+<div class="menu-item" id="presentBtn">
+<div style="font-size:34px">🎁</div><div>Present</div>
+</div>
+</div>
+<div id="content" class="content-card hidden"></div>
+</section>
 
- <button class="heart-btn" data-key="7"><span class="heart-shape"></span><div class="heart-label">7</div></button>
- <button class="heart-btn" data-key="8"><span class="heart-shape"></span><div class="heart-label">8</div></button>
- <button class="heart-btn" data-key="9"><span class="heart-shape"></span><div class="heart-label">9</div></button>
-
- <!-- clear / 0 / back -->
- <button class="heart-btn" id="clearKey"><span style="font-weight:900;color:#0b5d86">C</span><div class="heart-label">clear</div></button>
- <button class="heart-btn" data-key="0"><span class="heart-shape"></span><div class="heart-label">0</div></button>
- <button class="heart-btn" id="backKey"><span style="font-weight:900;color:#0b5d86">&larr;</span><div class="heart-label">del</div></button>
- </div>
-
- <div class="small-ctrls">
- <button class="ctrl-btn" id="enterBtn">Enter</button>
- <button class="ctrl-btn" id="cancelBtn" style="background:#9fd2ff">Cancel</button>
- </div>
- </div>
- </div>
-
- <!-- ERROR overlay (wrong code) -->
- <div id="errorOverlay" class="overlay hidden" role="alertdialog" aria-modal="true">
- <div class="lock-box" style="width:320px">
- <div class="gif-area" style="width:120px;height:120px">
- <!-- error gif -->
- <img src="https://tenor.com/lkmqAYyiZwJ.gif" alt="error gif" />
- </div>
- <div style="font-weight:900;font-size:18px;margin-top:8px">aw baby… try again!</div>
- <div style="margin-top:10px">
- <button class="ctrl-btn" id="tryAgainBtn">Try again</button>
- </div>
- </div>
- </div>
-
- <!-- CELEBRATION overlay (on correct code) -->
- <div id="celebrateOverlay" class="overlay hidden" aria-hidden="true">
- <div class="lock-box" style="width:360px; display:flex;flex-direction:column;align-items:center;gap:12px">
- <div class="gif-area" style="width:180px;height:180px">
- <!-- celebration gif -->
- <img src="https://tenor.com/vr4xK7mvBDK.gif" alt="celebrate" style="width:100%;height:100%;object-fit:cover"/>
- </div>
- <div style="font-weight:900;font-size:18px">You did it! </div>
- </div>
- </div>
-
- <!-- MENU (after success) -->
- <section id="menu" class="page" style="display:none;flex-direction:column;align-items:center;justify-content:flex-start;padding-top:44px;">
- <div class="cinna-top">
- <div class="cinna-face">✧</div>
- <h2 style="margin:6px 0 0;font-weight:900">Open your little world</h2>
- <div style="color:#236b93;opacity:.9;font-size:14px">tap an icon</div>
- </div>
-
- <div class="menu-grid" role="list">
- <div class="menu-item" id="letterBtn" role="listitem" title="Letter">
- <div style="font-size:34px"> </div>
- <div style="margin-top:8px">Letter</div>
- </div>
-
- <div class="menu-item" id="musicBtn" role="listitem" title="Music">
- <div style="font-size:34px"> </div>
- <div style="margin-top:8px">Songs</div>
- </div>
-
- <div class="menu-item" id="presentBtn" role="listitem" title="Present">
- <div style="font-size:34px"> </div>
- <div style="margin-top:8px">Present</div>
- </div>
- </div>
-
- <div id="menuContent" class="content-card hidden" style="max-width:840px"></div>
- </section>
+<!-- TENOR SCRIPT (only once) -->
+<script type="text/javascript" async src="https://tenor.com/embed.js"></script>
 
 <script>
-/* ---------- Config ---------- */
-const CORRECT_CODE = '220525'; // the code you specified
+const yesBtn=document.getElementById('yes-btn');
+const noBtn=document.getElementById('no-btn');
+const main=document.getElementById('main');
+const lock=document.getElementById('lock-overlay');
+const error=document.getElementById('error-overlay');
+const menu=document.getElementById('menu');
+const celebrateGif=document.getElementById('celebrateGif');
+const pw=document.getElementById('pw');
+const openBtn=document.getElementById('open-btn');
+const tryAgain=document.getElementById('try-again');
+const content=document.getElementById('content');
+const letterBtn=document.getElementById('letterBtn');
+const musicBtn=document.getElementById('musicBtn');
+const presentBtn=document.getElementById('presentBtn');
+let noHover=0;
 
-/* ---------- Elements ---------- */
-const noBtn = document.getElementById('noBtn');
-const yesBtn = document.getElementById('yesBtn');
-const lockOverlay = document.getElementById('lockOverlay');
-const errorOverlay = document.getElementById('errorOverlay');
-const celebrateOverlay = document.getElementById('celebrateOverlay');
-const tryAgainBtn = document.getElementById('tryAgainBtn');
-const enterBtn = document.getElementById('enterBtn');
-const cancelBtn = document.getElementById('cancelBtn');
-const keypad = document.getElementById('keypad');
-const digitBoxes = [document.getElementById('d1'),document.getElementById('d2'),document.getElementById('d3'),document.getElementById('d4'),document.getElementById('d5'),document.getElementById('d6')];
-const startScreen = document.getElementById('start');
-const menu = document.getElementById('menu');
-const menuContent = document.getElementById('menuContent');
-const letterBtn = document.getElementById('letterBtn');
-const musicBtn = document.getElementById('musicBtn');
-const presentBtn = document.getElementById('presentBtn');
+noBtn.addEventListener('mouseover',()=>{
+noHover++;
+if(noHover<4){
+noBtn.style.position='absolute';
+noBtn.style.left=Math.random()*60+'%';
+noBtn.style.top=Math.random()*60+'%';
+}else{noBtn.style.display='none';}
+});
 
-/* ---------- NO button runaway logic ---------- */
-let noHoverCount = 0;
-const maxMoves = 3; // move on 1..3, disappear on 4th
-let noIsAbsolute = false;
+yesBtn.addEventListener('click',()=>{lock.classList.remove('hidden');pw.focus();});
+openBtn.addEventListener('click',checkCode);
+pw.addEventListener('keydown',(e)=>{if(e.key==='Enter')checkCode();});
+tryAgain.addEventListener('click',()=>{error.classList.add('hidden');lock.classList.remove('hidden');pw.focus();});
 
-function ensureNoAbsolute(){
- if(noIsAbsolute) return;
- // compute current position relative to page container
- const row = document.getElementById('cloudRow');
- const containerRect = row.getBoundingClientRect();
- const btnRect = noBtn.getBoundingClientRect();
- const left = btnRect.left - containerRect.left;
- const top = btnRect.top - containerRect.top;
- noBtn.style.position = 'absolute';
- noBtn.style.left = left + 'px';
- noBtn.style.top = top + 'px';
- noBtn.style.zIndex = 60;
- // make row relative so absolute positions are relative to it
- row.style.position = 'relative';
- noIsAbsolute = true;
+function checkCode(){
+if(pw.value==='220525'){
+lock.classList.add('hidden');
+celebrateGif.classList.remove('hidden');
+main.style.display='none';
+menu.style.display='flex';
+}else{
+lock.classList.add('hidden');
+error.classList.remove('hidden');
+}
+pw.value='';
 }
 
-noBtn.addEventListener('pointerenter', (e) => {
- noHoverCount++;
- ensureNoAbsolute();
- if(noHoverCount <= maxMoves){
- // move to random spot within the row container
- const row = document.getElementById('cloudRow');
- const containerRect = row.getBoundingClientRect();
- const btnRect = noBtn.getBoundingClientRect();
- const margin = 8;
- const maxLeft = Math.max(margin, containerRect.width - btnRect.width - margin);
- const maxTop = Math.max(margin, row.clientHeight + 120 - btnRect.height - margin); // allow moves slightly beyond
- const newLeft = Math.random() * (maxLeft - margin) + margin;
- const newTop = Math.random() * (maxTop - margin) + margin - 20; // slight vertical range
- noBtn.style.left = Math.round(newLeft) + 'px';
- noBtn.style.top = Math.round(newTop) + 'px';
- noBtn.style.transform = 'scale(1.04)';
- setTimeout(()=> noBtn.style.transform = 'scale(1)', 220);
- } else {
- // disappear on 4th hover
- noBtn.style.transition = 'transform .28s ease, opacity .28s ease';
- noBtn.style.transform = 'scale(.3) translateY(-8px)';
- noBtn.style.opacity = '0';
- noBtn.style.pointerEvents = 'none';
- // remove from DOM after animation
- setTimeout(()=> noBtn.remove(), 380);
- }
+letterBtn.addEventListener('click',()=>{
+content.innerHTML='<h3>My love letter</h3><p>Write your message here 💙</p>';content.classList.remove('hidden');
 });
-
-/* ---------- YES opens lock only ---------- */
-yesBtn.addEventListener('click', () => {
- lockOverlay.classList.remove('hidden');
+musicBtn.addEventListener('click',()=>{
+content.innerHTML='<h3>Songs that make me think of you 🎧</h3><ul><li>Song 1</li><li>Song 2</li></ul>';content.classList.remove('hidden');
 });
-
-/* ---------- keypad / code handling ---------- */
-let code = '';
-
-function updateDisplay(){
- for(let i=0;i<6;i++){
- digitBoxes[i].textContent = code[i] ? '●' : '';
- }
-}
-
-keypad.addEventListener('click', (e) => {
- const btn = e.target.closest('button');
- if(!btn) return;
- if(btn.dataset && btn.dataset.key !== undefined){
- if(code.length < 6){
- code += btn.dataset.key;
- updateDisplay();
- }
- } else if(btn.id === 'clearKey'){
- code = '';
- updateDisplay();
- } else if(btn.id === 'backKey'){
- code = code.slice(0, -1);
- updateDisplay();
- }
+presentBtn.addEventListener('click',()=>{
+content.innerHTML='<h3>Your present 🎁</h3><div id="reveal" class="reveal-bar">Click to reveal your code</div><div id="code" class="hidden">REPLACE-WITH-YOUR-STEAM-CODE ✨</div>';
+content.classList.remove('hidden');
+document.getElementById('reveal').addEventListener('click',()=>{
+document.getElementById('code').classList.remove('hidden');
 });
-
-enterBtn.addEventListener('click', () => {
- submitCode();
 });
-cancelBtn.addEventListener('click', () => {
- lockOverlay.classList.add('hidden');
- code = '';
- updateDisplay();
-});
-
-/* helper to show overlays */
-function showError(){
- lockOverlay.classList.add('hidden');
- errorOverlay.classList.remove('hidden');
-}
-tryAgainBtn.addEventListener('click', () => {
- errorOverlay.classList.add('hidden');
- lockOverlay.classList.remove('hidden');
- code = '';
- updateDisplay();
-});
-
-/* On success: show celebration gif overlay above the buttons, then go to menu */
-function showCelebrationAndProceed(){
- lockOverlay.classList.add('hidden');
- celebrateOverlay.classList.remove('hidden');
- // after a pause, hide celebrate and show menu
- setTimeout(() => {
- celebrateOverlay.classList.add('hidden');
- goToMenu();
- }, 2400); // 2.4s show
-}
-
-function submitCode(){
- if(code.length !== 6) {
- // short: treat as wrong
- showError();
- code = '';
- updateDisplay();
- return;
- }
- if(code === CORRECT_CODE){
- // right
- showCelebrationAndProceed();
- code = '';
- updateDisplay();
- } else {
- // wrong
- showError();
- code = '';
- updateDisplay();
- }
-}
-
-/* ---------- Menu operations ---------- */
-function goToMenu(){
- // hide start screen and show menu
- document.getElementById('start').style.display = 'none';
- menu.style.display = 'flex';
- menu.style.flexDirection = 'column';
- menuContent.classList.add('hidden');
-}
-
-/* Letter */
-letterBtn.addEventListener('click', () => {
- menuContent.classList.remove('hidden');
- menuContent.innerHTML = `
- <h3 style="margin-top:0">My love letter </h3>
- <textarea id="letterText" style="width:100%;min-height:220px;border-radius:12px;border:1px dashed #d6eefc;padding:12px;font-size:15px;resize:vertical">Hey love — replace this with your letter </textarea>
- <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:10px">
- <button id="saveLetter" style="background:linear-gradient(180deg,var(--accent),#66b4e9);color:#fff;border:none;padding:8px 12px;border-radius:999px;font-weight:800">Save (local)</button>
- <button id="closeLetter" style="background:#9fd2ff;color:#00324a;border:none;padding:8px 12px;border-radius:999px;font-weight:800">Close</button>
- </div>
- `;
- const saved = localStorage.getItem('love_letter_v1');
- const ta = document.getElementById('letterText');
- if(saved) ta.value = saved;
- document.getElementById('saveLetter').addEventListener('click', ()=>{
- localStorage.setItem('love_letter_v1', ta.value);
- const btn = document.getElementById('saveLetter');
- btn.textContent = 'Saved!';
- setTimeout(()=> btn.textContent = 'Save (local)', 1200);
- });
- document.getElementById('closeLetter').addEventListener('click', ()=> menuContent.classList.add('hidden'));
-});
-
-/* Music */
-musicBtn.addEventListener('click', () => {
- menuContent.classList.remove('hidden');
- menuContent.innerHTML = `
- <h3 style="margin-top:0">Songs that make me think of you </h3>
- <div style="display:flex;flex-direction:column;gap:10px">
- <div style="padding:10px;border-radius:10px;background:linear-gradient(180deg,#f8feff,#ffffff);display:flex;align-items:center;justify-content:space-between">
- <div>Glue Song — beabadoobee (example)</div>
- <!-- add audio files in repo and set src if you'd like -->
- </div>
- <div style="padding:10px;border-radius:10px;background:linear-gradient(180deg,#f8feff,#ffffff);display:flex;align-items:center;justify-content:space-between">
- <div>Song 2 — (replace)</div>
- </div>
- </div>
- <div style="display:flex;justify-content:flex-end;margin-top:12px"><button id="closeMusic" style="background:#9fd2ff;color:#00324a;border:none;padding:8px 12px;border-radius:999px;font-weight:800">Close</button></div>
- `;
- document.getElementById('closeMusic').addEventListener('click', ()=> menuContent.classList.add('hidden'));
-});
-
-/* Present (steam code reveal) */
-presentBtn.addEventListener('click', () => {
- menuContent.classList.remove('hidden');
- menuContent.innerHTML = `
- <h3 style="margin-top:0">Your present </h3>
- <p>Click the bar to reveal the Steam code.</p>
- <div id="revealBar" class="reveal-bar" style="margin-top:8px">Click to reveal your code</div>
- <div id="codeBox" class="code-box hidden">REPLACE-WITH-YOUR-STEAM-CODE</div>
- <div style="display:flex;justify-content:flex-end;margin-top:10px"><button id="closeGift" style="background:#9fd2ff;color:#00324a;border:none;padding:8px 12px;border-radius:999px;font-weight:800">Close</button></div>
- `;
- document.getElementById('revealBar').addEventListener('click', () => {
- const bar = document.getElementById('revealBar');
- const box = document.getElementById('codeBox');
- bar.textContent = 'Revealing...';
- let p = 0;
- const t = setInterval(() => {
- p += 8 + Math.random()*8;
- if(p >= 100){
- clearInterval(t);
- bar.textContent = 'Here it is ';
- box.classList.remove('hidden');
- // Replace with the real code:
- box.textContent = 'YOUR-STEAM-CODE-HERE';
- } else {
- bar.textContent = 'Revealing ' + Math.floor(p) + '%';
- }
- }, 110);
- });
- document.getElementById('closeGift').addEventListener('click', ()=> menuContent.classList.add('hidden'));
-});
-
-/* ---------- Floating hearts & stars ---------- */
-const floatWrap = document.getElementById('float-wrap');
-
-const svgns = "http://www.w3.org/2000/svg";
-function makeSVG(tag, attrs={}){
- const el = document.createElementNS(svgns, tag);
- for(const k in attrs) el.setAttribute(k, attrs[k]);
- return el;
-}
-
-function spawnShape(){
- const wrapper = document.createElement('div');
- wrapper.className = 'float';
- const size = Math.floor(12 + Math.random()*34);
- wrapper.style.width = size + 'px';
- wrapper.style.height = size + 'px';
- wrapper.style.left = (Math.random()*100) + 'vw';
- const drift = Math.round((Math.random()*240)-120);
- wrapper.style.setProperty('--drift', drift + 'px');
- const dur = Math.floor(6000 + Math.random()*9000);
- const delay = Math.floor(Math.random()*1200);
- wrapper.style.animation = `rise ${dur}ms linear ${delay}ms forwards`;
- wrapper.style.opacity = 0;
-
- if(Math.random() > 0.45){
- // heart path
- const svg = makeSVG('svg', {viewBox:'0 0 24 24', width:size, height:size, class:'shape'});
- const path = makeSVG('path', {d:'M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'});
- path.setAttribute('fill', 'var(--blue-shape)');
- svg.appendChild(path);
- wrapper.appendChild(svg);
- } else {
- const svg = makeSVG('svg', {viewBox:'0 0 24 24', width:size, height:size, class:'shape'});
- // simple star
- const path = makeSVG('path', {d:'M12 .587l3.668 7.431 8.2 1.192-5.934 5.788 1.402 8.168L12 18.896 3.664 23.166l1.402-8.168L-0.868 9.209l8.2-1.192z'});
- path.setAttribute('fill','var(--blue-shape)');
- svg.appendChild(path);
- wrapper.appendChild(svg);
- }
-
- floatWrap.appendChild(wrapper);
- setTimeout(()=> wrapper.remove(), dur + delay + 500);
-}
-
-setInterval(()=> {
- spawnShape();
- if(Math.random() > 0.6) spawnShape();
-}, 820);
-
-/* minimal CSS animation for rise (insert dynamically because we used JS variables) */
-const style = document.createElement('style');
-style.innerHTML = `
-@keyframes rise {
- 0%{ transform: translateY(0) translateX(0); opacity:0 }
- 8%{ opacity:1 }
- 100%{ transform: translateY(-120vh) translateX(var(--drift)); opacity:0 }
-}`;
-document.head.appendChild(style);
-
-/* accessibility: allow Enter on yes/no when focused */
-yesBtn.addEventListener('keydown', (e)=> { if(e.key === 'Enter') yesBtn.click(); });
-noBtn.addEventListener('keydown', (e)=> { if(e.key === 'Enter') noBtn.click(); });
-
-/* Prevent accidental text selection etc */
-document.addEventListener('selectstart', e => { if(e.target.closest('.heart-btn')) e.preventDefault(); });
-
-/* --------- initial focus handling ---------- */
-window.addEventListener('keydown', (e) => {
- if(e.key === 'Escape'){
- lockOverlay.classList.add('hidden');
- errorOverlay.classList.add('hidden');
- celebrateOverlay.classList.add('hidden');
- }
-});
-
-/* Ensure the GIF area on the lock screen shows the initial gif when opened (reset on reopen) */
-lockOverlay.addEventListener('transitionend', ()=>{}); // placeholder
-
-/* --- Done --- */
 </script>
 </body>
 </html>
