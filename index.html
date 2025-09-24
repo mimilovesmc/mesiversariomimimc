@@ -1,214 +1,233 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Four months together </title>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;600;800&display=swap" rel="stylesheet">
 <style>
- :root{
- --bg:#ffffff; /* background is now white */
- --accent:#8fd3ff; /* light blue */
- --muted:#d8efff;
- --text:#063a56;
- --white:#ffffff;
- --blue-shape:#7fb6f5;
- --shadow: 0 10px 30px rgba(6,40,70,0.09);
- --glass: rgba(255,255,255,0.7);
- }
- *{box-sizing:border-box}
- html,body{height:100%}
- body{
+ body {
  margin:0;
- font-family: 'Nunito', system-ui, -apple-system, "Segoe UI", Roboto, Arial;
- background: var(--bg); /* WHITE */
- color:var(--text);
+ font-family:'Nunito',sans-serif;
+ background:#fff; /* white */
  overflow:hidden;
+ color:#083a52;
  }
-
- /* main wrapper */
- .page{
- position:relative;
- min-height:100vh;
- display:flex;
- align-items:center;
- justify-content:center;
- padding:28px;
- text-align:center;
+ h1,h2,h3{margin:10px 0;text-align:center}
+ .page{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;text-align:center;padding:20px}
+ .cloud-btn {
+ background:linear-gradient(180deg,#cfeaff,#a6d8ff);
+ border:none;padding:15px 30px;border-radius:50px;margin:10px;font-size:20px;font-weight:bold;
+ cursor:pointer;box-shadow:0 5px 15px rgba(0,0,0,0.1);color:#03344f;
  }
-
- h1.title{
- font-size:clamp(20px,4vw,36px);
- margin:0 20px 18px;
- color:#044b72;
- font-weight:900;
- text-shadow:0 3px 14px rgba(2,40,70,0.06);
- }
-
- /* cloud buttons */
- .cloud-row{display:flex;gap:18px;align-items:center;justify-content:center;position:relative;z-index:40}
- .cloud-btn{
- position:relative;
- display:inline-flex;
- align-items:center;
- justify-content:center;
- width:150px;height:64px;padding:12px 18px;border-radius:48px;
- background:var(--accent); /* light blue */
- color:white;
- border:none;font-weight:900;font-size:20px;cursor:pointer;
- box-shadow: var(--shadow);
- user-select:none; transition:transform .16s ease, left .28s ease, top .28s ease, opacity .28s;
- }
- .cloud-btn:active{transform:scale(.98)}
-
- /* lock overlay */
- .overlay{
- position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background: rgba(5,30,50,0.12);z-index:180;
- }
+ #noBtn{position:relative}
+ .overlay{position:fixed;inset:0;background:rgba(0,0,0,0.2);display:flex;align-items:center;justify-content:center;z-index:100}
  .hidden{display:none}
-
- .lock-box{
- width:360px;max-width:92%;border-radius:18px;background:linear-gradient(180deg,#ffffff,#f7feff);
- padding:16px;border:2px solid rgba(255,255,255,0.6);box-shadow:var(--shadow);text-align:center;
- position:relative;
- }
- .gif-area{width:100%;margin:8px auto 10px}
- .code-display{display:flex;gap:8px;justify-content:center;margin:10px 0 6px}
- .digit-box{width:36px;height:46px;border-radius:8px;background:linear-gradient(180deg,#fff,#f1fbff);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:20px;border:2px solid #e3f3ff;box-shadow:0 8px 18px rgba(3,30,50,0.06)}
-
- /* keypad hearts */
- .keypad{display:grid;grid-template-columns:repeat(3,72px);gap:12px;justify-content:center;margin-top:12px}
- .heart-btn{width:72px;height:64px;border-radius:18px;background:var(--accent);color:white;border:none;
- display:flex;align-items:center;justify-content:center;font-weight:900;cursor:pointer;box-shadow:0 8px 18px rgba(3,30,50,0.06)}
- .heart-label{font-size:16px;margin-left:6px}
-
- .small-ctrls{display:flex;justify-content:center;gap:12px;margin-top:10px}
- .ctrl-btn{padding:8px 12px;border-radius:999px;border:none;background:var(--accent);color:white;font-weight:800;cursor:pointer;box-shadow:0 8px 18px rgba(3,30,50,0.06)}
-
- .msg{font-weight:800;margin-top:10px;color:#144a6b}
-
- /* menu screen */
- #menu{display:none;min-height:100vh;padding:32px;box-sizing:border-box;overflow:auto}
- .cinna-top{display:flex;flex-direction:column;align-items:center;gap:8px;margin-bottom:18px}
- .menu-grid{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
- .menu-item{width:120px;height:120px;border-radius:14px;background:var(--accent);color:white;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:var(--shadow);cursor:pointer;font-weight:800}
- .content-card{margin-top:18px;width:min(800px,92%);padding:14px;border-radius:12px;background:rgba(255,255,255,0.92);box-shadow:var(--shadow)}
-
- /* reveal bar & code box */
- .reveal-bar{height:52px;border-radius:26px;background:linear-gradient(90deg,#dfefff,#eaf6ff);display:flex;align-items:center;justify-content:center;cursor:pointer;user-select:none;box-shadow:var(--shadow);font-weight:900}
- .code-box{margin-top:12px;padding:12px;border-radius:10px;background:#fff;font-weight:800;letter-spacing:1px;box-shadow:var(--shadow)}
+ .lock-box{background:white;border-radius:15px;padding:20px;max-width:400px;width:90%;box-shadow:0 10px 30px rgba(0,0,0,0.1);text-align:center}
+ .ctrl-btn{margin-top:15px;padding:10px 20px;border-radius:20px;background:#88ccff;color:white;font-weight:bold;border:none;cursor:pointer}
+ .code-display{font-size:28px;letter-spacing:8px;margin:15px 0}
+ .keypad{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;max-width:250px;margin:0 auto}
+ .keypad button{padding:15px;border-radius:50%;font-size:20px;border:none;background:#a6d8ff;color:#fff;cursor:pointer}
+ .menu-grid{display:flex;gap:15px;flex-wrap:wrap;justify-content:center;margin-top:20px}
+ .menu-item{width:120px;height:120px;background:white;border-radius:15px;box-shadow:0 5px 15px rgba(0,0,0,0.1);
+ display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer}
+ .content-card{background:white;border-radius:15px;box-shadow:0 5px 15px rgba(0,0,0,0.1);padding:20px;margin-top:20px;max-width:600px;width:90%}
+ .reveal-bar{margin-top:15px;padding:15px;border-radius:20px;background:#eaf6ff;cursor:pointer;font-weight:bold}
+ .code-box{margin-top:10px;padding:15px;background:#fff5c8;border-radius:12px;font-size:20px;font-weight:bold}
+ .gif-embed-small{max-width:180px;margin:0 auto;border-radius:12px;overflow:hidden}
+ /* floating shapes */
+ .float{position:absolute;width:20px;height:20px;opacity:0.5;animation:float 12s linear infinite}
+ @keyframes float{0%{transform:translateY(100vh)}100%{transform:translateY(-10vh)}}
 </style>
 </head>
 <body>
 
- <!-- MAIN START SCREEN -->
- <main id="start" class="page" role="main" aria-live="polite">
+<!-- floating shapes -->
+<div id="float-wrap"></div>
+
+<!-- MAIN SCREEN -->
+<main id="start" class="page">
+ <div class="gif-embed-small">
+ <div class="tenor-gif-embed" data-postid="4580452194650460755" data-share-method="host" data-aspect-ratio="1" data-width="100%">
+ <a href="https://tenor.com/view/cinnamoroll-gif-4580452194650460755">Cinnamoroll Sticker</a>
+ </div>
+ </div>
+ <h1>Four months together, do you want to see your gift?</h1>
  <div>
- <!-- Main page gif -->
- <div class="gif-area">
- <div class="tenor-gif-embed" data-postid="4580452194650460755" data-share-method="host" data-aspect-ratio="1" data-width="100%"></div>
+ <button id="yesBtn" class="cloud-btn">yes</button>
+ <button id="noBtn" class="cloud-btn">no</button>
  </div>
- <h1 class="title">Four months together, do you want to see your gift?</h1>
- <div class="cloud-row" id="cloudRow">
- <button id="yesBtn" class="cloud-btn" aria-label="Yes">yes</button>
- <button id="noBtn" class="cloud-btn" aria-label="No">no</button>
- </div>
- </div>
- </main>
+</main>
 
- <!-- LOCK SCREEN -->
- <div id="lockOverlay" class="overlay hidden">
+<!-- LOCK SCREEN -->
+<div id="lockOverlay" class="overlay hidden">
  <div class="lock-box">
- <!-- Lock screen gif -->
- <div class="gif-area">
- <div class="tenor-gif-embed" data-postid="7305456039700818281" data-share-method="host" data-aspect-ratio="1.27586" data-width="100%"></div>
+ <div class="gif-embed-small">
+ <div class="tenor-gif-embed" data-postid="7305456039700818281" data-share-method="host" data-aspect-ratio="1.27586" data-width="100%">
+ <a href="https://tenor.com/view/cinnamoroll-gif-7305456039700818281">Cinnamoroll Sticker</a>
  </div>
- <div class="code-display">
- <div class="digit-box" id="d1"></div>
- <div class="digit-box" id="d2"></div>
- <div class="digit-box" id="d3"></div>
- <div class="digit-box" id="d4"></div>
- <div class="digit-box" id="d5"></div>
- <div class="digit-box" id="d6"></div>
  </div>
+ <h2>Enter the 6-digit code</h2>
+ <div id="codeDisplay" class="code-display">______</div>
  <div class="keypad" id="keypad">
- <button class="heart-btn" data-key="1">1</button>
- <button class="heart-btn" data-key="2">2</button>
- <button class="heart-btn" data-key="3">3</button>
- <button class="heart-btn" data-key="4">4</button>
- <button class="heart-btn" data-key="5">5</button>
- <button class="heart-btn" data-key="6">6</button>
- <button class="heart-btn" data-key="7">7</button>
- <button class="heart-btn" data-key="8">8</button>
- <button class="heart-btn" data-key="9">9</button>
- <button class="heart-btn" id="clearKey">C</button>
- <button class="heart-btn" data-key="0">0</button>
- <button class="heart-btn" id="backKey">←</button>
- </div>
- <div class="small-ctrls">
- <button class="ctrl-btn" id="enterBtn">Enter</button>
- <button class="ctrl-btn" id="cancelBtn">Cancel</button>
+ <button>1</button><button>2</button><button>3</button>
+ <button>4</button><button>5</button><button>6</button>
+ <button>7</button><button>8</button><button>9</button>
+ <button>←</button><button>0</button><button>✓</button>
  </div>
  </div>
- </div>
+</div>
 
- <!-- ERROR SCREEN -->
- <div id="errorOverlay" class="overlay hidden">
+<!-- ERROR SCREEN -->
+<div id="errorOverlay" class="overlay hidden">
  <div class="lock-box">
- <!-- Wrong password gif -->
- <div class="gif-area">
- <div class="tenor-gif-embed" data-postid="9370341840084598979" data-share-method="host" data-aspect-ratio="0.6875" data-width="100%"></div>
+ <div class="gif-embed-small">
+ <div class="tenor-gif-embed" data-postid="9370341840084598979" data-share-method="host" data-aspect-ratio="0.6875" data-width="100%">
+ <a href="https://tenor.com/view/sanrio-white-blue-tears-peachybluebeary-cinnamoroll-gif-9370341840084598979">Sanrio White Sticker</a>
+ </div>
  </div>
  <p>aw baby… try again!</p>
- <button class="ctrl-btn" id="tryAgainBtn">Try again</button>
+ <button id="tryAgainBtn" class="ctrl-btn">Try again</button>
  </div>
- </div>
+</div>
 
- <!-- CELEBRATION SCREEN -->
- <div id="celebrateOverlay" class="overlay hidden">
+<!-- CELEBRATION SCREEN -->
+<div id="celebrateOverlay" class="overlay hidden">
  <div class="lock-box">
- <!-- Correct password gif -->
- <div class="gif-area">
- <div class="tenor-gif-embed" data-postid="23288118" data-share-method="host" data-aspect-ratio="1.23552" data-width="100%"></div>
- </div>
- <p>You did it! </p>
+ <div class="gif-embed-small">
+ <div class="tenor-gif-embed" data-postid="23288118" data-share-method="host" data-aspect-ratio="1.23552" data-width="100%">
+ <a href="https://tenor.com/view/cinnamoroll-sanrio-yay-cheerful-gif-23288118">Cinnamoroll Sanrio Sticker</a>
  </div>
  </div>
+ <h2>You did it! </h2>
+ </div>
+</div>
 
- <!-- MENU -->
- <section id="menu" class="page" style="display:none;flex-direction:column;align-items:center;justify-content:flex-start;padding-top:44px;">
- <div class="cinna-top">
- <h2 style="margin:6px 0 0;font-weight:900">Open your little world</h2>
- <div style="color:#236b93;opacity:.9;font-size:14px">tap an icon</div>
+<!-- MENU -->
+<section id="menu" class="page" style="display:none;flex-direction:column;align-items:center">
+ <h2>Open your little world</h2>
+ <div class="menu-grid" role="list">
+ <div class="menu-item" id="letterBtn" role="listitem" title="Letter">
+ <div style="font-size:34px"> </div><div style="margin-top:8px">Letter</div>
  </div>
- <div class="menu-grid">
- <div class="menu-item" id="letterBtn"> <div>Letter</div></div>
- <div class="menu-item" id="musicBtn"> <div>Songs</div></div>
- <div class="menu-item" id="presentBtn"> <div>Present</div></div>
+ <div class="menu-item" id="musicBtn" role="listitem" title="Music">
+ <div style="font-size:34px"> </div><div style="margin-top:8px">Songs</div>
+ </div>
+ <div class="menu-item" id="presentBtn" role="listitem" title="Present">
+ <div style="font-size:34px"> </div><div style="margin-top:8px">Present</div>
+ </div>
  </div>
  <div id="menuContent" class="content-card hidden"></div>
- </section>
+</section>
 
-<script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+<!-- TENOR SCRIPT -->
+<script async src="https://tenor.com/embed.js"></script>
+
 <script>
-/* JS logic unchanged except background/buttons already updated */
-const CORRECT_CODE='220525';
-const yesBtn=document.getElementById('yesBtn'),noBtn=document.getElementById('noBtn');
-const lockOverlay=document.getElementById('lockOverlay'),errorOverlay=document.getElementById('errorOverlay'),celebrateOverlay=document.getElementById('celebrateOverlay');
-const tryAgainBtn=document.getElementById('tryAgainBtn'),enterBtn=document.getElementById('enterBtn'),cancelBtn=document.getElementById('cancelBtn'),keypad=document.getElementById('keypad');
-const digitBoxes=[d1,d2,d3,d4,d5,d6];
-const start=document.getElementById('start'),menu=document.getElementById('menu'),menuContent=document.getElementById('menuContent');
-const letterBtn=document.getElementById('letterBtn'),musicBtn=document.getElementById('musicBtn'),presentBtn=document.getElementById('presentBtn');
+/* floating shapes */
+const floatWrap=document.getElementById('float-wrap');
+for(let i=0;i<25;i++){
+ const s=document.createElement('div');
+ s.className='float';
+ s.style.left=Math.random()*100+'vw';
+ s.style.animationDuration=10+Math.random()*10+'s';
+ s.textContent=Math.random()>0.5?' ':' ';
+ floatWrap.appendChild(s);
+}
 
-let code='';function updateDisplay(){digitBoxes.forEach((b,i)=>b.textContent=code[i]?'●':'');}
-keypad.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.key){if(code.length<6){code+=b.dataset.key;updateDisplay();}}else if(b.id==='clearKey'){code='';updateDisplay();}else if(b.id==='backKey'){code=code.slice(0,-1);updateDisplay();}});
-enterBtn.addEventListener('click',()=>{if(code===CORRECT_CODE){lockOverlay.classList.add('hidden');celebrateOverlay.classList.remove('hidden');setTimeout(()=>{celebrateOverlay.classList.add('hidden');start.style.display='none';menu.style.display='flex';},2400);}else{lockOverlay.classList.add('hidden');errorOverlay.classList.remove('hidden');}code='';updateDisplay();});
-cancelBtn.addEventListener('click',()=>{lockOverlay.classList.add('hidden');code='';updateDisplay();});
-yesBtn.addEventListener('click',()=>lockOverlay.classList.remove('hidden'));
-tryAgainBtn.addEventListener('click',()=>{errorOverlay.classList.add('hidden');lockOverlay.classList.remove('hidden');});
-letterBtn.addEventListener('click',()=>{menuContent.classList.remove('hidden');menuContent.innerHTML='<h3>My love letter </h3><p>Write your message here </p>';});
-musicBtn.addEventListener('click',()=>{menuContent.classList.remove('hidden');menuContent.innerHTML='<h3>Songs that make me think of you </h3><ul><li>Song 1</li><li>Song 2</li></ul>';});
-presentBtn.addEventListener('click',()=>{menuContent.classList.remove('hidden');menuContent.innerHTML='<h3>Your present </h3><div id="revealBar" class="reveal-bar">Click to reveal your code</div><div id="codeBox" class="code-box hidden">YOUR-STEAM-CODE </div>';document.getElementById('revealBar').addEventListener('click',()=>{document.getElementById('codeBox').classList.remove('hidden');});});
+/* no button runs away */
+const noBtn=document.getElementById('noBtn');
+let noHover=0;
+noBtn.addEventListener('mouseover',()=>{
+ noHover++;
+ if(noHover<4){
+ noBtn.style.position='absolute';
+ noBtn.style.left=Math.random()*60+'%';
+ noBtn.style.top=Math.random()*60+'%';
+ }else{noBtn.style.display='none';}
+});
+
+/* screens */
+const yesBtn=document.getElementById('yesBtn');
+const lock=document.getElementById('lockOverlay');
+const error=document.getElementById('errorOverlay');
+const celebrate=document.getElementById('celebrateOverlay');
+const start=document.getElementById('start');
+const menu=document.getElementById('menu');
+
+yesBtn.addEventListener('click',()=>{lock.classList.remove('hidden');});
+
+document.getElementById('tryAgainBtn').addEventListener('click',()=>{
+ error.classList.add('hidden');
+ lock.classList.remove('hidden');
+});
+
+/* keypad */
+const correct='220525';
+let entered='';
+const codeDisplay=document.getElementById('codeDisplay');
+document.getElementById('keypad').addEventListener('click',e=>{
+ if(e.target.tagName!=='BUTTON')return;
+ const val=e.target.textContent;
+ if(!isNaN(val)){ // number
+ if(entered.length<6)entered+=val;
+ }else if(val==='←'){entered=entered.slice(0,-1);}
+ else if(val==='✓'){checkCode();}
+ updateDisplay();
+});
+function updateDisplay(){codeDisplay.textContent=entered.padEnd(6,'_');}
+function checkCode(){
+ if(entered===correct){
+ lock.classList.add('hidden');
+ celebrate.classList.remove('hidden');
+ setTimeout(()=>{
+ celebrate.classList.add('hidden');
+ start.style.display='none';
+ menu.style.display='flex';
+ },2000);
+ }else{
+ lock.classList.add('hidden');
+ error.classList.remove('hidden');
+ }
+ entered='';updateDisplay();
+}
+
+/* menu items */
+const menuContent=document.getElementById('menuContent');
+document.getElementById('letterBtn').addEventListener('click',()=>{
+ menuContent.classList.remove('hidden');
+ menuContent.innerHTML='<h3>My love letter </h3><p>Write your message here </p>';
+});
+document.getElementById('musicBtn').addEventListener('click',()=>{
+ menuContent.classList.remove('hidden');
+ menuContent.innerHTML='<h3>Songs that make me think of you </h3><ul><li>Song 1</li><li>Song 2</li></ul>';
+});
+document.getElementById('presentBtn').addEventListener('click',()=>{
+ menuContent.classList.remove('hidden');
+ menuContent.innerHTML=`
+ <h3>Your present </h3>
+ <p>Click the bar to reveal the Steam code.</p>
+ <div id="revealBar" class="reveal-bar">Click to reveal your code</div>
+ <div id="codeBox" class="code-box hidden">REPLACE-WITH-YOUR-STEAM-CODE</div>
+ `;
+ const bar=document.getElementById('revealBar');
+ const box=document.getElementById('codeBox');
+ bar.addEventListener('click',()=>{
+ let p=0;
+ bar.textContent='Revealing 0%';
+ const t=setInterval(()=>{
+ p+=Math.floor(Math.random()*15)+5;
+ if(p>=100){
+ clearInterval(t);
+ bar.textContent='Here it is ';
+ box.classList.remove('hidden');
+ box.textContent='YOUR-STEAM-CODE-HERE';
+ }else{
+ bar.textContent='Revealing '+p+'%';
+ }
+ },200);
+ });
+});
 </script>
 </body>
 </html>
