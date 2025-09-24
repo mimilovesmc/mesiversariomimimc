@@ -29,8 +29,9 @@
  .keypad{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;max-width:250px;margin:0 auto}
  .keypad button{padding:15px;border-radius:50%;font-size:20px;border:none;background:#a6d8ff;color:#fff;cursor:pointer}
  .menu-grid{display:flex;gap:15px;flex-wrap:wrap;justify-content:center;margin-top:20px}
- .menu-item{width:120px;height:120px;background:white;border-radius:15px;box-shadow:0 5px 15px rgba(0,0,0,0.1);
- display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer}
+ .menu-item{width:100px;height:100px;background:linear-gradient(180deg,#cfeaff,#a6d8ff); /* light blue buttons */
+ border-radius:50%;box-shadow:0 5px 15px rgba(0,0,0,0.1);
+ display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:34px}
  .content-card{background:white;border-radius:15px;box-shadow:0 5px 15px rgba(0,0,0,0.1);padding:20px;margin-top:20px;max-width:600px;width:90%}
  .reveal-bar{margin-top:15px;padding:15px;border-radius:20px;background:#eaf6ff;cursor:pointer;font-weight:bold}
  .code-box{margin-top:10px;padding:15px;background:#fff5c8;border-radius:12px;font-size:20px;font-weight:bold}
@@ -105,17 +106,16 @@
 
 <!-- MENU -->
 <section id="menu" class="page" style="display:none;flex-direction:column;align-items:center">
+ <div class="gif-embed-small">
+ <div class="tenor-gif-embed" data-postid="4580452194650460755" data-share-method="host" data-aspect-ratio="1" data-width="100%">
+ <a href="https://tenor.com/view/cinnamoroll-gif-4580452194650460755">Cinnamoroll Sticker</a>
+ </div>
+ </div>
  <h2>Open your little world</h2>
  <div class="menu-grid" role="list">
- <div class="menu-item" id="letterBtn" role="listitem" title="Letter">
- <div style="font-size:34px"> </div><div style="margin-top:8px">Letter</div>
- </div>
- <div class="menu-item" id="musicBtn" role="listitem" title="Music">
- <div style="font-size:34px"> </div><div style="margin-top:8px">Songs</div>
- </div>
- <div class="menu-item" id="presentBtn" role="listitem" title="Present">
- <div style="font-size:34px"> </div><div style="margin-top:8px">Present</div>
- </div>
+ <div class="menu-item" id="letterBtn" role="listitem" title="Letter"> </div>
+ <div class="menu-item" id="musicBtn" role="listitem" title="Music"> </div>
+ <div class="menu-item" id="presentBtn" role="listitem" title="Present"> </div>
  </div>
  <div id="menuContent" class="content-card hidden"></div>
 </section>
