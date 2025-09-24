@@ -1,215 +1,77 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Happy Mesiversary 💕</title>
-<!-- Cute Google Font -->
-<link href="https://fonts.googleapis.com/css2?family=Sacramento&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-<style>
-body {
-margin: 0;
-text-align: center;
-font-family: 'Poppins', sans-serif;
-background: linear-gradient(135deg, #ffb6c1, #ffe4e1);
-min-height: 100vh; /* allows scrolling */
-position: relative;
-}
-h1 {
-font-family: 'Sacramento', cursive;
-font-size: 4em;
-color: #d1005d;
-margin-top: 60px;
-animation: fadeIn 2s ease-in;
-}
-p {
-font-size: 1.4em;
-margin-bottom: 20px;
-color: #333;
-}
-button {
-padding: 15px 25px;
-margin: 10px;
-font-size: 1.2em;
-border: none;
-border-radius: 25px;
-background: #ff4d79;
-color: white;
-cursor: pointer;
-transition: transform 0.2s, background 0.3s;
-position: relative;
-}
-button:hover {
-transform: scale(1.1);
-background: #d1005d;
-}
-#gift, #noResponse {
-display: none;
-margin-top: 30px;
-animation: fadeIn 1.5s ease-in;
-}
-#gift h2, #noResponse h2 {
-color: #d1005d;
-font-size: 2em;
-}
-@keyframes fadeIn {
-from {opacity: 0;}
-to {opacity: 1;}
-}
-/* Floating hearts */
-.heart {
-position: absolute;
-bottom: -50px;
-color: rgba(255,0,100,0.7);
-font-size: 24px;
-animation: floatUp 6s linear infinite;
-}
-@keyframes floatUp {
-from { transform: translateY(0) scale(1); opacity: 1; }
-to { transform: translateY(-120vh) scale(1.5); opacity: 0; }
-}
-/* No button absolute so it can move freely */
-#noBtn {
-position: absolute;
-}
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Four months together ✨</title>
 
-/* Letter and Steam styles */
-.letter {
-width: 100px;
-height: 100px;
-background: url('https://cdn-icons-png.flaticon.com/512/2991/2991148.png') no-repeat center/cover;
-margin: 20px auto;
-cursor: pointer;
-}
-.letter-content {
-display: none;
-background: #fff0f5;
-border: 2px solid #d1005d;
-border-radius: 10px;
-padding: 20px;
-margin: 10px auto;
-max-width: 300px;
-color: #d1005d;
-font-size: 1em;
-}
-.steam-bar {
-width: 250px;
-margin: 20px auto;
-padding: 15px;
-background: #ff4d79;
-color: white;
-border-radius: 25px;
-cursor: pointer;
-transition: background 0.3s;
-}
-.steam-bar:hover {
-background: #d1005d;
-}
-.steam-code {
-display: none;
-margin-top: 10px;
-background: #fff0f5;
-color: #d1005d;
-border: 2px solid #d1005d;
-border-radius: 10px;
-padding: 10px;
-font-weight: bold;
-}
-</style>
+<!-- Google font (safe to include) -->
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;600;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<h1>Happy Mesiversary, my love ❤️</h1>
-<p>Wanna see your gift?</p>
-<button onclick="showGift()">Yes</button>
-<button id="noBtn">No</button>
+<!-- floating shapes -->
+<div id="float-wrap" aria-hidden="true"></div>
 
-<!-- YES response -->
-<div id="gift">
-<h2>🎁 Here’s your surprise! 🎁</h2>
-<img src="https://media.giphy.com/media/j5QcmXoFWl4Q0/giphy.gif" width="300">
-<p>I love you forever 💕</p>
+<!-- main screen -->
+<main id="main-screen" class="center-area">
+<h1 class="main-text">Four months together, do you want to see your gift?</h1>
 
-<!-- Letter -->
-<div class="letter" onclick="toggleLetter()"></div>
-<div class="letter-content" id="letterContent">
-<!-- You can write your message here later -->
-Hey love! ❤️ This is a little message just for you...
+<div class="cloud-row">
+<button id="yes-btn" class="cloud-btn">yes</button>
+<button id="no-btn" class="cloud-btn">no</button>
+</div>
+</main>
+
+<!-- lock screen modal -->
+<div id="lock-screen" class="overlay hidden">
+<div class="lock-card">
+<h2>Enter the code to open your gift</h2>
+<input id="pw-input" type="password" inputmode="numeric" placeholder="••••••" maxlength="6" />
+<div class="lock-actions">
+<button id="unlock-btn" class="pill">Open</button>
+</div>
+<p class="hint">Hint: it's a date ♥️</p>
+</div>
 </div>
 
-<!-- Steam code -->
-<div class="steam-bar" onclick="toggleSteam()">Click to reveal your Steam code 🎮</div>
-<div class="steam-code" id="steamCode">
-<!-- Put your Steam code here -->
-ABCD-EFGH-IJKL
+<!-- error modal -->
+<div id="error-modal" class="overlay hidden">
+<div class="card small">
+<p class="cute-error">aw baby… try again!</p>
+<button class="pill" id="try-again">Try again</button>
 </div>
 </div>
 
-<!-- NO response -->
-<div id="noResponse">
-<h2>Babyyyyyyy, pls you will like it TwT</h2>
-<img src="https://media.giphy.com/media/ROF8OQvDmxytW/giphy.gif" width="250">
+<!-- success / cinnamoroll menu -->
+<section id="menu-section" class="hidden center-area">
+<div class="cinna-header">
+<div class="cinna-face">✧</div>
+<h2>Open your little world</h2>
+<p class="sub">(tap an icon)</p>
 </div>
 
-<!-- Floating hearts & button script -->
-<script>
-const noBtn = document.getElementById("noBtn");
-let attempts = 0;
+<div class="menu-grid">
+<div class="menu-item" id="letter-item">
+<div class="menu-icon">✉️</div>
+<div class="menu-label">Letter</div>
+</div>
 
-function showGift() {
-document.getElementById('gift').style.display = 'block';
-document.getElementById('noResponse').style.display = 'none';
-}
+<div class="menu-item" id="music-item">
+<div class="menu-icon">🎵</div>
+<div class="menu-label">Songs</div>
+</div>
 
-function showNo() {
-document.getElementById('noResponse').style.display = 'block';
-document.getElementById('gift').style.display = 'none';
-}
+<div class="menu-item" id="gift-item">
+<div class="menu-icon">🎁</div>
+<div class="menu-label">Present</div>
+</div>
+</div>
 
-// Move the "No" button to a random location
-function moveNo() {
-let x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
-let y = Math.random() * (window.innerHeight - noBtn.offsetHeight - 50) + 50;
-noBtn.style.left = x + "px";
-noBtn.style.top = y + "px";
-}
+<div id="content-area" class="content-card hidden"></div>
+</section>
 
-// Handle clicks on "No" button
-function handleNoClick() {
-attempts++;
-if (attempts < 3) {
-moveNo(); // button escapes
-} else {
-showNo(); // message shows on 3rd click
-}
-}
-
-// Letter toggle
-function toggleLetter() {
-const letter = document.getElementById('letterContent');
-letter.style.display = letter.style.display === 'block' ? 'none' : 'block';
-}
-
-// Steam code toggle
-function toggleSteam() {
-const code = document.getElementById('steamCode');
-code.style.display = code.style.display === 'block' ? 'none' : 'block';
-}
-
-// Attach events
-noBtn.addEventListener("mouseover", moveNo);
-noBtn.addEventListener("click", handleNoClick);
-
-// Create floating hearts
-function createHeart() {
-const heart = document.createElement("div");
-heart.className = "heart";
-heart.innerHTML = "❤️";
-heart.style.left = Math.random() * 100 + "vw";
-heart.style.fontSize = (20 + Math.random() * 30) + "px";
-heart.style.animationDuration = (4 + Math.random() * 3) + "s";
-document.body.appendChild(heart);
-setTimeout(() => heart.remove(), 7000);
-}
-setInterval(createHeart, 700);
-</script>
+<script src="script.js"></script>
 </body>
 </html>
