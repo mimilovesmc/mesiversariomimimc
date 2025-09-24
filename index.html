@@ -29,16 +29,34 @@
  .keypad{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;max-width:250px;margin:0 auto}
  .keypad button{padding:15px;border-radius:50%;font-size:20px;border:none;background:#a6d8ff;color:#fff;cursor:pointer}
  .menu-grid{display:flex;gap:15px;flex-wrap:wrap;justify-content:center;margin-top:20px}
- .menu-item{width:100px;height:100px;background:linear-gradient(180deg,#cfeaff,#a6d8ff); /* light blue buttons */
- border-radius:50%;box-shadow:0 5px 15px rgba(0,0,0,0.1);
- display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:34px}
+ .menu-item{
+ min-width:100px;
+ padding:15px 0;
+ background:linear-gradient(180deg,#cfeaff,#a6d8ff); /* light blue background */
+ border-radius:12px;
+ box-shadow:0 5px 15px rgba(0,0,0,0.1);
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ cursor:pointer;
+ font-size:34px; /* icons only */
+ }
  .content-card{background:white;border-radius:15px;box-shadow:0 5px 15px rgba(0,0,0,0.1);padding:20px;margin-top:20px;max-width:600px;width:90%}
  .reveal-bar{margin-top:15px;padding:15px;border-radius:20px;background:#eaf6ff;cursor:pointer;font-weight:bold}
  .code-box{margin-top:10px;padding:15px;background:#fff5c8;border-radius:12px;font-size:20px;font-weight:bold}
  .gif-embed-small{max-width:180px;margin:0 auto;border-radius:12px;overflow:hidden}
- /* floating shapes */
- .float{position:absolute;width:20px;height:20px;opacity:0.5;animation:float 12s linear infinite}
- @keyframes float{0%{transform:translateY(100vh)}100%{transform:translateY(-10vh)}}
+ /* floating blue stars and hearts */
+ .float {
+ position:absolute;
+ font-size:20px;
+ color:#4da6ff; /* soft blue */
+ opacity:0.7;
+ animation:float 12s linear infinite;
+ }
+ @keyframes float {
+ 0%{transform:translateY(100vh) scale(1);}
+ 100%{transform:translateY(-10vh) scale(1.2);}
+ }
 </style>
 </head>
 <body>
@@ -124,14 +142,14 @@
 <script async src="https://tenor.com/embed.js"></script>
 
 <script>
-/* floating shapes */
+/* floating stars & hearts */
 const floatWrap=document.getElementById('float-wrap');
 for(let i=0;i<25;i++){
  const s=document.createElement('div');
  s.className='float';
  s.style.left=Math.random()*100+'vw';
  s.style.animationDuration=10+Math.random()*10+'s';
- s.textContent=Math.random()>0.5?' ':' ';
+ s.textContent=Math.random()>0.5?'★':' '; // stars & hearts
  floatWrap.appendChild(s);
 }
 
